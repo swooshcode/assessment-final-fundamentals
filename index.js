@@ -41,7 +41,19 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  if(!movies.length) { 
+    return 0
+  }
+   let highestMeta = 0
+  for (let i = 0; i < movies.length; i++) {
+    movieMetaScore = Number(movies[i].metascore)
+    if (movieMetaScore > highestMeta) {
+      highestMeta = movieMetaScore
+    }
+  }
+  return highestMeta
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +66,17 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  if(!movies.length) { 
+    return 0;
+}
+let totalRating = 0
+let allMovieRating = movies.length
+for (let movie of movies) {
+  totalRating += Number(movie.imdbRating)
+}
+return totalRating / allMovieRating
+}
 
 /**
  * countByRating()
@@ -67,7 +89,21 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  let movieRatings = {}
+if (!movies.length) {
+  return movieRatings
+}
+for (i = 0; i < movies.length; i++) {
+let keyMovieRatings = movies[i].rated //create key
+if (movieRatings[keyMovieRatings]) {
+  movieRatings[keyMovieRatings] += 1 //incremental
+  } else {
+    movieRatings[keyMovieRatings] = 1 
+    }
+  }
+  return movieRatings
+}
 
 /**
  * findById()
