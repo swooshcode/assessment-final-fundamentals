@@ -130,6 +130,7 @@ function filterByGenre() {}
     ];
  */
 function getAllMoviesReleasedAtOrBeforeYear() {}
+  
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -142,7 +143,21 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  let biggestBox = 0
+  let biggestBoxTitle
+  if (!movies.length) {
+    return null
+  }
+  for (let i = 0; i < movies.length; i++) {
+    if (Number(movies[i].boxOffice.slice(1).split(`,`).join("")) > biggestBox) {
+      biggestBox = Number(movies[i].boxOffice.slice(1).split(`,`).join(""));
+      biggestBoxTitle = movies[i].title
+    }
+
+  }
+  return biggestBoxTitle
+}
 
 // Do not change anything below this line.
 module.exports = {
